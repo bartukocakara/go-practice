@@ -1,0 +1,52 @@
+https://buraksenyurt.com/post/golang-defer-panic-ve-recover-kavramlarini-taniyalim
+
+DEFER
+
+ Defer ifadesi ile işaret edilen fonksiyon, program çalışması sırasında mutlak suretle devreye girmesi istenen operasyonlarda 
+kullanılır. Üzerinde işlem yapılmış bir dosyanın, açılan bir veritabanı bağlantısının, haberleşilen bir soket ile olan
+ iletişimin kapatılması veya belleğe alınan ama işleri biten nesnelerin serbest bırakılması gibi genelleyebileceğimiz
+ işlemler bu operasyonlara örnek olarak verilebilir.
+
+LIFO Durumu
+defer ifadesi son giren ilk çıkar mantığına göre çalışır(Last In First Out). Buna göre bir fonksiyon içerisinde
+ kullanılan ne kadar defer ifadesi varsa son girenden ilk eklenene göre teker teker çalıştırılır.
+
+_________________________________________________
+PANIC VE RECOVER
+
+Yazdığımız uygulama kodunda meydana gelebilecek bazı hatalar ortama panic olarak yansır. Bir dizinin olmayan elemanına
+ erişilmeye çalışılması, açılmak istenen dosyanın ilgili klasörde olmaması, başaltılmadan(initialize edilmeden) bir slice 
+içeriğinin kullanılmaya çalışılması gibi durumlar bu hatalara örnek olarak verilebilir. Geliştirici isterse çalışma zamanı
+ için bilinçli olarak panik havası da estirebilir. Her iki durumda da paniğin oluştuğu fonksiyonun çalışması durdurulur,
+ varsa defer edilmiş fonksiyonlar çalıştırılır ve ardından fonksiyonun sahibi olan konuma(function caller) dönülür ama
+ devam eden kod satırları işletilmez. Oluşan panikten sakin bir şekilde çıkılması için recover fonksiyonundan yararlanılır.
+ Ne var ki recover çağrımlarının anlamlı olması için defer iile kullanımı gerekir.
+
+_________________________________________________
+https://golangbyexample.com/struct-slice-field-go/
+initialize array
+
+_________________________________________________
+13) What is goroutine in Go programming language?
+A goroutine is a function which usually runs concurrently with other functions. If you want to stop goroutine,
+ you pass a signal channel to the goroutine, that signal channel pushes a value into when you want the goroutine to stop.
+
+The goroutine polls that channel regularly as soon as it detects a signal, it quits.
+
+__________________________________________________
+40) Is it recommended to use Global Variables in a program that implements go routines?
+Global variables are not recommended because they may get accessed by multiple go routines (threads) concurrently
+ and this can easily lead to an unexpected behavior causing arbitrary results.
+__________________________________________________
+41) What do you know about modular programming?
+Modular programming is a way to divide the program in to sub programs (modules / function) to achieve maximum efficiency.
+
+More generic functions definition facilitates you to re-use the functions, such as built-in library functions.
+__________________________________________________
+GO gRPG
+https://medium.com/@sddkal/grpc-api-rehberi-6dc561070c03
+__________________________________________________
+Olası Sorular
+https://gobyexample.com/
+https://app.coderpad.io/dashboard/pads
+https://tech.deliveryhero.com/preparing-for-your-technical-interview-delivery-hero/
